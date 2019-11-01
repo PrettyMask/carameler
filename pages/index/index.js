@@ -12,8 +12,11 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../logs/logs'
+      url: '../historyList/historyList'
     })
+  },
+  test: function(e) {
+    console.log('hhhhhhhhhhhhh', e.target.dataset)
   },
   onLoad: function () {
     if (app.globalData.userInfo) {

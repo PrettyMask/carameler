@@ -1,0 +1,58 @@
+.history-list{
+    height: 100vh;
+    background: rgba(255, 180, 217, 0.1);
+}
+.year-wrap{
+    background: #ffffff;
+    padding: 10px 16px;
+    box-shadow: 0 1px 3px 1px rgba(255, 180, 217, 0.4);
+    margin: 5px 0;
+}
+.year-title{
+    color: palevioletred;
+    font-weight: bold;
+    font-size: 23px;
+    text-align: left;
+    padding: 5px 0;
+    width: 100%;
+    text-shadow: 0 2px 4px 1px rgba(255, 180, 217, 0.4);
+    display: flex;
+    justify-content: space-between;
+}
+.month-wrap{
+    background: #ffffff;
+    padding-top: 10px;
+}
+.month-title{
+    color: rgba(219, 112, 147, 0.59);
+    font-weight: bold;
+    font-size: 18px;
+}
+.money-wrap{
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    margin: 5px 0;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(255, 180, 217, 0.2);
+}
+.money-day{
+    width: 200rpx;
+}
+.money-label{
+    flex-grow: 0.5;
+}
+.money-money{
+    flex-grow: 0.5;
+}
+.add-item{
+    width: 100%;
+    position: fixed;
+    bottom: 20rpx;
+    left: 0;
+    background: palevioletred;
+    color: white;
+    font-size: 18px;
+    padding: 10px 0;
+    text-align: center;
+}

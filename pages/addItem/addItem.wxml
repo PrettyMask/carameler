@@ -1,0 +1,19 @@
+<view class="page-add-item">
+    <view class="input-wrap">
+        <view class="input-item">
+            <div class="input-label">选择时间: </div>
+            <picker class="input-border input-date" value="2019/01/01" mode="date" start="2018-01-01" end="2019-01-01" bindchange="bindDateChange">
+                请选择时间
+            </picker>
+        </view>
+        <view class="input-item">
+            <div class="input-label">请输入项目名称: </div>
+            <div class="input-border"><input maxlength="10" bindinput="label-input"/></div>
+        </view>
+        <view class="input-item">
+            <div class="input-label">请输入金额: </div>
+            <div class="input-border"><input type="number" maxlength="5" bindinput="money-input"/></div>
+        </view>
+    </view>
+    <view class="submit-confirm">确定</view>
+</view>

@@ -1,0 +1,12 @@
+<view class="list-detail">
+    <view bindtap="" class="year-title">{{year + ''}}</view>
+    <view class="month-wrap" wx:for="{{yearData}}" wx:for-item="monthItem" wx:for-index="monthIndex" wx:key="{{monthIndex}}">
+        <div class="month-title">{{monthIndex}} 月</div>
+        <view class="money-wrap" wx:for="{{monthItem}}" wx:for-item="moneyItem" wx:for-index="moneyIndex" wx:key="{{moneyIndex}}">
+            <div class="money-day">{{monthIndex}}/{{moneyItem.day}}</div>
+            <div class="money-label">{{moneyItem.label}}</div>
+            <div class="money-money">{{moneyItem.value}}</div>
+        </view>
+    </view>
+    <view class="add-item-detail" bindtap="add-new-item">新增</view>
+</view>
