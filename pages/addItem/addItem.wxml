@@ -2,18 +2,18 @@
     <view class="input-wrap">
         <view class="input-item">
             <div class="input-label">选择时间: </div>
-            <picker class="input-border input-date" value="2019/01/01" mode="date" start="2018-01-01" end="2019-01-01" bindchange="bindDateChange">
-                请选择时间
+            <picker class="input-border input-date" value="{{date}}" mode="date" start="2018-01-01" end="{{today}}" bindchange="bindDateChange">
+                {{changed ? date : date}}
             </picker>
         </view>
         <view class="input-item">
             <div class="input-label">请输入项目名称: </div>
-            <div class="input-border"><input maxlength="10" bindinput="label-input"/></div>
+            <div class="input-border"><input maxlength="10" bindinput="labelInput"/></div>
         </view>
         <view class="input-item">
             <div class="input-label">请输入金额: </div>
-            <div class="input-border"><input type="number" maxlength="5" bindinput="money-input"/></div>
+            <div class="input-border"><input type="number" maxlength="5" bindinput="moneyInput"/></div>
         </view>
     </view>
-    <view class="submit-confirm">确定</view>
+    <view class="submit-confirm" bindtap="submit">确定</view>
 </view>
