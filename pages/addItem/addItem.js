@@ -2,11 +2,12 @@ const app = getApp();
 
 Page({
     data: {
-        today: new Date().toLocaleDateString(),
-        date: new Date().toLocaleDateString(),
+        today: '',
+        date: '',
         changed: false,
         label: '',
-        value: ''
+        value: '',
+        listData: {},
     },
     bindDateChange: function(e) {
         console.log('picker发送选择改变，携带值为', e.detail.value);
@@ -33,9 +34,68 @@ Page({
         const day = dateArr[2];
         const newData = {
             label: this.data.label,
-            money: this.data.value,
-            day: `${month}/${day}`
+            value: this.data.value,
+            day: day
         };
         console.log(newData);
+        let listData = this.data.listData;
+        let targetValue = listData[year];
+        console.log(targetValue)
+        if (targetValue) {
+            let targetYearData = targetValue.data;
+            let targetMonthData = targetYearData[month] || [];
+            targetMonthData.push(newData);
+            targetYearData[month] = targetMonthData;
+        } else {
+            targetValue = {
+                data: {
+                    [month]: [newData]
+                },
+                isSpread: true
+            }
+        }
+
+        listData[year] = targetValue;
+
+        wx.setStorage({
+            key: 'historyList',
+            data: {
+                listData
+            },
+            success: function(res) {
+                wx.reLaunch({
+                    url: '../historyList/historyList'
+                });
+            }
+        })
     },
+
+    initDate: function() {
+        const now = new Date().toLocaleDateString();
+        const dateArr = now.split('/');
+        const year = dateArr[0];
+        const month = dateArr[1];
+        const day = dateArr[2];
+        this.setData({
+            today: `${year}-${month}-${day}`,
+            date: `${year}-${month}-${day}`
+        })
+    },
+
+    onLoad: function () {
+        this.initDate();
+        const that = this;
+        wx.getStorage({
+            key: 'historyList',
+            success: function(res) {
+                // 异步接口在success回调才能拿到返回值
+                var listData = res.data.listData;
+                that.setData({listData});
+            },
+            fail: function() {
+                console.log('读取 historyList 发生错误');
+                that.setData({listData: {}});
+            }
+        })
+    }
 });

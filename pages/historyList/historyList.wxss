@@ -2,6 +2,12 @@
     height: 100vh;
     background: rgba(255, 180, 217, 0.1);
 }
+.empty{
+    text-align: center;
+    padding: 100rpx 0;
+    color: palevioletred;
+    font-size: 20px;
+}
 .year-wrap{
     background: #ffffff;
     padding: 10px 16px;
@@ -45,14 +51,29 @@
 .money-money{
     flex-grow: 0.5;
 }
-.add-item{
+.btn-group{
     width: 100%;
     position: fixed;
     bottom: 20rpx;
     left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.clear-all{
+    background: white;
+    color: palevioletred;
+    border: 1px solid palevioletred;
+    font-size: 18px;
+    padding: 9px 0;
+    text-align: center;
+    width: 50%;
+}
+.add-item{
     background: palevioletred;
     color: white;
     font-size: 18px;
     padding: 10px 0;
     text-align: center;
+    flex-grow: 1;
 }

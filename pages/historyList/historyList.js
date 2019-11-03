@@ -2,7 +2,8 @@ const app = getApp();
 
 Page({
     data: {
-        listData: {}
+        listData: {},
+        empty: true
     },
     spread: function (e) {
         const year = e.target.dataset.year;
@@ -11,6 +12,16 @@ Page({
         const spreadFlag = yearData.isSpread;
         yearData.isSpread = !spreadFlag;
         this.setData({listData})
+    },
+    clearAll: function() {
+        wx.clearStorage({
+            success: () => {
+                this.setData({
+                    listData: {},
+                    empty: true
+                })
+            }
+        })
     },
     addNewItem: function () {
         console.log('点击添加')
@@ -53,22 +64,23 @@ Page({
             }
         };
         this.setData({
-            listData: listDataMock
+            listData: listData,
+            empty: false
         })
     },
     onLoad: function (options) {
-        console.log(options);
+        console.log('加载加载加载');
         const that = this;
         wx.getStorage({
             key: 'historyList',
             success: function(res) {
                 // 异步接口在success回调才能拿到返回值
-                var listData = res.data;
+                var listData = res.data.listData;
                 that.setListData(listData);
             },
             fail: function() {
                 console.log('读取 historyList 发生错误');
-                that.setListData();
+                // that.setListData();
             }
 
         })
