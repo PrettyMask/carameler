@@ -28,19 +28,32 @@ Page({
     },
     submit: function () {
         console.log('提交');
+        const {label, value} = this.data;
+        let message = '';
+        if (!label) {
+            message = '请填写项目名称';
+        } else if (!value) {
+            message = '请填写金额';
+        }
+
+        if (message) {
+            return wx.showToast({
+                title: message,
+                icon: 'none',
+                duration: 1500
+            });
+        }
         const dateArr = (this.data.date).split('-');
         const year = dateArr[0];
         const month = dateArr[1];
         const day = dateArr[2];
         const newData = {
-            label: this.data.label,
-            value: this.data.value,
+            label,
+            value,
             day: day
         };
-        console.log(newData);
         let listData = this.data.listData;
         let targetValue = listData[year];
-        console.log(targetValue)
         if (targetValue) {
             let targetYearData = targetValue.data;
             let targetMonthData = targetYearData[month] || [];

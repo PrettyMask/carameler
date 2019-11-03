@@ -59,13 +59,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid palevioletred;
 }
 .clear-all{
     background: white;
     color: palevioletred;
-    border: 1px solid palevioletred;
     font-size: 18px;
-    padding: 9px 0;
+    padding: 10px 0;
     text-align: center;
     width: 50%;
 }
