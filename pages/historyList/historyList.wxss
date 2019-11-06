@@ -8,6 +8,9 @@
     color: palevioletred;
     font-size: 20px;
 }
+.data-wrap{
+    height: 90%;
+}
 .year-wrap{
     background: #ffffff;
     padding: 10px 16px;
@@ -33,28 +36,49 @@
     color: rgba(219, 112, 147, 0.59);
     font-weight: bold;
     font-size: 18px;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    background: linear-gradient(to right, white, #ff90b4 100%);
+    position: sticky;
+    top: 0;
+    border-radius: 10rpx;
+}
+.count{
+    color: white;
+    padding-right: 5rpx;
+}
+.day-wrap{
+
 }
 .money-wrap{
+    margin: 5px 0;
+    padding: 5px 0;
     display: flex;
     justify-content: space-between;
     font-size: 16px;
-    margin: 5px 0;
-    padding: 5px 0;
     border-bottom: 1px solid rgba(255, 180, 217, 0.2);
 }
 .money-day{
     width: 200rpx;
 }
 .money-label{
-    flex-grow: 0.5;
+    width: 300rpx;
 }
-.money-money{
-    flex-grow: 0.5;
+.money-value{
+    flex-grow: 1;
+}
+.del-item{
+    background: red;
+    color: white;
+    padding: 2px 5px;
+    z-index: -1;
 }
 .btn-group{
     width: 100%;
     position: fixed;
-    bottom: 20rpx;
+    /*bottom: 20rpx;*/
+    bottom: 0rpx;
     left: 0;
     display: flex;
     justify-content: space-between;

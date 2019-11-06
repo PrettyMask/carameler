@@ -36,32 +36,27 @@ Page({
     },
     setListData: function(listData) {
         var listDataMock = {
-            '2018': {
+            '2019': {
                 data: {
-                    10: [
-                        {day: '30' ,label: '吃饭', value: '100'},
-                        {day: '31' ,label: '喝水', value: '100'}
-                    ],
-                    11: [
-                        {day: '1' ,label: '电脑', value: '4500'},
-                        {day: '2' ,label: '电脑', value: '4500'}
-                    ]
+                    10: {
+                        data: {
+                            1: [{id:'1278978323',label: '吃饭', value: 200}],
+                            2: [{id:'3892474987',label: '吃饭', value: 200}],
+                        },
+                        isSpread: true,
+                        count: 1000
+                    },
+                    11: {
+                        data: {
+                            1: [{id:'1278978323',label: '吃饭', value: 200}],
+                            2: [{id:'3892474987',label: '吃饭', value: 200}],
+                        },
+                        count: 2000,
+                        isSpread: true
+                    },
                 },
                 isSpread: true
             },
-            '2019': {
-                data: {
-                    10: [
-                        {day: '30' ,label: '吃饭', value: '100'},
-                        {day: '31' ,label: '喝水', value: '100'}
-                    ],
-                    11: [
-                        {day: '1' ,label: '电脑', value: '4500'},
-                        {day: '2' ,label: '电脑', value: '4500'}
-                    ]
-                },
-                isSpread: false
-            }
         };
         this.setData({
             listData: listData,

@@ -2,7 +2,7 @@
     <view class="input-wrap">
         <view class="input-item">
             <div class="input-label">选择时间: </div>
-            <picker class="input-border input-date" value="{{date}}" mode="date" start="2018-01-01" end="{{today}}" bindchange="bindDateChange">
+            <picker class="input-border input-date" value="{{date}}" mode="date" start="2015-01-01" end="{{today}}" bindchange="bindDateChange">
                 {{changed ? date : date}}
             </picker>
         </view>

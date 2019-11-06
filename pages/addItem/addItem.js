@@ -23,7 +23,7 @@ Page({
     },
     moneyInput: function (e) {
         this.setData({
-            value: e.detail.value
+            value: Number(e.detail.value)
         })
     },
     submit: function () {
@@ -44,25 +44,48 @@ Page({
             });
         }
         const dateArr = (this.data.date).split('-');
-        const year = dateArr[0];
-        const month = dateArr[1];
-        const day = dateArr[2];
+        const year = Number(dateArr[0]);
+        const month = Number(dateArr[1]);
+        const day = Number(dateArr[2]);
         const newData = {
             label,
             value,
-            day: day
+            id: new Date().getTime()
         };
         let listData = this.data.listData;
-        let targetValue = listData[year];
-        if (targetValue) {
+        let targetValue = listData[year]; // 对应的年
+        if (targetValue) { // 对应的年存在
             let targetYearData = targetValue.data;
-            let targetMonthData = targetYearData[month] || [];
-            targetMonthData.push(newData);
-            targetYearData[month] = targetMonthData;
-        } else {
+            let targetMonth = targetYearData[month]; // 取到对应的月份
+            let targetMonthData = null;
+            if (targetMonth) { // 月份存在，在原来的数据上压栈
+                targetMonthData = targetMonth.data;
+                let targetDayData = targetMonthData[day] || []; // 取到对应的天
+                targetDayData.push(newData); // 天数默认是数组，直接压栈
+                targetMonthData = Object.assign(targetMonthData, { // 将每一天的数据和当月其他天的数据合在一起
+                    [day]: targetDayData
+                });
+                targetYearData[month].count += value;
+                targetYearData[month].data = targetMonthData;
+            } else { // 月份不存在，添加新的月份
+                targetMonthData = {
+                    data: {
+                        [day]: [newData]
+                    },
+                    count: value
+                };
+                targetYearData[month] = targetMonthData;
+            }
+
+        } else { // 新建年
             targetValue = {
                 data: {
-                    [month]: [newData]
+                    [month]: {
+                        data: {
+                            [day]: [newData]
+                        },
+                        count: value
+                    }
                 },
                 isSpread: true
             }

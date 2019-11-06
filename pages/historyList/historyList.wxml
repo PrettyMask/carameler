@@ -1,21 +1,27 @@
-<view class="history-list">
+<view scroll-y="true" class="history-list">
     <view wx:if="{{empty}}" class="empty">暂时没有数据</view>
-    <view wx:else>
+    <scroll-view class="data-wrap" scroll-y="true" wx:else>
         <view class="year-wrap" wx:for="{{listData}}" wx:for-item="yearItem" wx:for-index="yearIndex" wx:key="{{yearIndex}}">
             <view class="year-title" bindtap="spread" data-year="{{yearIndex}}">
                 <div data-year="{{yearIndex}}">{{yearIndex}}</div>
                 <div class="spread-icon" data-year="{{yearIndex}}"> {{yearItem.isSpread ? '^' : '>'}} </div>
             </view>
             <view class="month-wrap" wx:if="{{yearItem.isSpread}}" wx:for="{{yearItem.data}}" wx:for-item="monthItem" wx:for-index="monthIndex" wx:key="{{monthIndex}}">
-                <div class="month-title">{{yearIndex}}/{{monthIndex}}</div>
-                <view class="money-wrap" wx:for="{{monthItem}}" wx:for-item="moneyItem" wx:for-index="moneyIndex" wx:key="{{moneyIndex}}">
-                    <div class="money-day">{{monthIndex}}/{{moneyItem.day}}</div>
-                    <div class="money-label">{{moneyItem.label}}</div>
-                    <div class="money-money">{{moneyItem.value}}</div>
+                <view class="month-title">
+                    <div>{{yearIndex}}/{{monthIndex}}</div>
+                    <div class="count">{{monthItem.count}} 元</div>
+                </view>
+                <view class="day-wrap" wx:for="{{monthItem.data}}" wx:for-item="dayItem" wx:for-index="dayIndex" wx:key="{{dayIndex}}">
+                    <view class="money-wrap" wx:for="{{dayItem}}" wx:for-item="moneyItem" wx:for-index="moneyIndex" wx:key="{{moneyIndex}}">
+                        <div class="money-day">{{monthIndex}}/{{dayIndex}}</div>
+                        <div class="money-label">{{moneyItem.label}}</div>
+                        <div class="money-value">{{moneyItem.value}}</div>
+<!--                        <div class="del-item" data-id="{{moneyItem.id}}">删除</div>-->
+                    </view>
                 </view>
             </view>
         </view>
-    </view>
+    </scroll-view>
     <view class="btn-group">
         <view class="clear-all" bindtap="clearAll">清除全部</view>
         <view class="add-item" bindtap="addNewItem">新增</view>
