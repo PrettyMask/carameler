@@ -13,10 +13,12 @@
                 </view>
                 <view class="day-wrap" wx:for="{{monthItem.data}}" wx:for-item="dayItem" wx:for-index="dayIndex" wx:key="{{dayIndex}}">
                     <view class="money-wrap" wx:for="{{dayItem}}" wx:for-item="moneyItem" wx:for-index="moneyIndex" wx:key="{{moneyIndex}}">
-                        <div class="money-day">{{monthIndex}}/{{dayIndex}}</div>
-                        <div class="money-label">{{moneyItem.label}}</div>
-                        <div class="money-value">{{moneyItem.value}}</div>
-<!--                        <div class="del-item" data-id="{{moneyItem.id}}">删除</div>-->
+                        <view class="item-info" bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{moneyIndex}}" style="">
+                            <div class="money-day">{{monthIndex}}/{{dayIndex}}</div>
+                            <div class="money-label">{{moneyItem.label}}</div>
+                            <div class="money-value">{{moneyItem.value}}</div>
+                        </view>
+                        <div class="del-item" data-id="{{moneyItem.id}}">删除</div>
                     </view>
                 </view>
             </view>
@@ -26,5 +28,4 @@
         <view class="clear-all" bindtap="clearAll">清除全部</view>
         <view class="add-item" bindtap="addNewItem">新增</view>
     </view>
-
 </view>

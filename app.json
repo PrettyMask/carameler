@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/historyList/historyList",
     "pages/listDetail/listDetail",
-    "pages/addItem/addItem"
+    "pages/addItem/addItem",
+    "pages/test/test"
   ],
   "window": {
     "backgroundTextStyle": "light",

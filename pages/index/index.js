@@ -13,6 +13,7 @@ Page({
   bindViewTap: function() {
     wx.navigateTo({
       url: '../historyList/historyList'
+      // url: '../test/test'
     })
   },
   test: function(e) {
