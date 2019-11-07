@@ -59,15 +59,16 @@ Page({
         const yearIndex = e.target.dataset.yearindex;
         const monthIndex = e.target.dataset.monthindex;
         const dayIndex = e.target.dataset.dayindex;
+        const moneyIndex = e.target.dataset.moneyindex;
         const moneyId = e.target.dataset.moneyid;
         var listData = this.data.listData;
         let yearData = listData[yearIndex].data;
         let monthData = yearData[monthIndex].data;
-        let monthCount = yearData[monthIndex].count;
         let dayData = monthData[dayIndex];
+        let moneyItem = dayData[moneyIndex];
         dayData = dayData.filter(o => o.id !== moneyId);
         monthData[dayIndex] = dayData;
-        yearData[monthIndex].count -= monthCount;
+        yearData[monthIndex].count -= moneyItem.value;
         this.setData({
             listData: listData // 更新页面中的数据
         });

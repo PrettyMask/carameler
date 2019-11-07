@@ -30,6 +30,7 @@
                              data-yearindex="{{yearIndex}}"
                              data-monthindex="{{monthIndex}}"
                              data-dayindex="{{dayIndex}}"
+                             data-moneyindex="{{moneyIndex}}"
                              data-moneyid="{{moneyItem.id}}"
                              bindtap="delItem">删除</div>
                     </view>
