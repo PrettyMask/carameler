@@ -18,7 +18,6 @@ Page({
             },
             fail: function() {
                 console.log('读取 historyList 发生错误');
-                // that.setListData();
             }
 
         })
@@ -34,12 +33,23 @@ Page({
         this.setData({listData})
     },
     clearAll: function() {
-        wx.clearStorage({
-            success: () => {
-                this.setData({
-                    listData: {},
-                    empty: true
-                })
+        let self = this;
+        wx.showModal({
+            title: '确定删除全部吗？',
+            content: '',
+            success (res) {
+                if (res.confirm) {
+                    wx.clearStorage({
+                        success: () => {
+                            self.setData({
+                                listData: {},
+                                empty: true
+                            })
+                        }
+                    })
+                } else if (res.cancel) {
+
+                }
             }
         })
     },
@@ -55,7 +65,7 @@ Page({
         })
     },
     delItem: function(e) {
-        console.log('点击删除');
+        const self = this;
         const yearIndex = e.target.dataset.yearindex;
         const monthIndex = e.target.dataset.monthindex;
         const dayIndex = e.target.dataset.dayindex;
@@ -69,16 +79,26 @@ Page({
         dayData = dayData.filter(o => o.id !== moneyId);
         monthData[dayIndex] = dayData;
         yearData[monthIndex].count -= moneyItem.value;
-        this.setData({
-            listData: listData // 更新页面中的数据
-        });
-        wx.setStorage({         // 更新 store 中的数据
-            key: 'historyList',
-            data: {
-                listData
-            },
-            success: function(res) {
-                console.log('删除成功');
+        wx.showModal({
+            title: '确定删除吗？',
+            content: '',
+            success (res) {
+                if (res.confirm) {
+                    self.setData({
+                        listData: listData // 更新页面中的数据
+                    });
+                    wx.setStorage({         // 更新 store 中的数据
+                        key: 'historyList',
+                        data: {
+                            listData
+                        },
+                        success: function(res) {
+                            console.log('删除成功');
+                        }
+                    })
+                } else if (res.cancel) {
+
+                }
             }
         })
     },
