@@ -72,7 +72,8 @@ Page({
                     data: {
                         [day]: [newData]
                     },
-                    count: value
+                    count: value,
+                    isSpread: true
                 };
                 targetYearData[month] = targetMonthData;
             }
@@ -84,7 +85,8 @@ Page({
                         data: {
                             [day]: [newData]
                         },
-                        count: value
+                        count: value,
+                        isSpread: true
                     }
                 },
                 isSpread: true

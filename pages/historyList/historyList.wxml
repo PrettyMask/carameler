@@ -2,16 +2,21 @@
     <view wx:if="{{empty}}" class="empty">暂时没有数据</view>
     <scroll-view class="data-wrap" scroll-y="true" wx:else>
         <view class="year-wrap" wx:for="{{listData}}" wx:for-item="yearItem" wx:for-index="yearIndex" wx:key="{{yearIndex}}">
-            <view class="year-title" bindtap="spread" data-year="{{yearIndex}}">
+            <view class="year-title" bindtap="spreadYear" data-year="{{yearIndex}}">
                 <div data-year="{{yearIndex}}">{{yearIndex}}</div>
-                <div class="spread-icon" data-year="{{yearIndex}}"> {{yearItem.isSpread ? '^' : '>'}} </div>
+                <div class="{{yearItem.isSpread ? 'icon-arrow-up' : 'icon-arrow-right'}}" data-year="{{yearIndex}}"></div>
             </view>
             <view class="month-wrap" wx:if="{{yearItem.isSpread}}" wx:for="{{yearItem.data}}" wx:for-item="monthItem" wx:for-index="monthIndex" wx:key="{{monthIndex}}">
-                <view class="month-title">
-                    <div>{{yearIndex}}/{{monthIndex}}</div>
-                    <div class="count">{{monthItem.count}} 元</div>
+                <view class="month-title" bindtap="spreadMonth" data-year="{{yearIndex}}" data-month="{{monthIndex}}">
+                    <div data-year="{{yearIndex}}" data-month="{{monthIndex}}">{{yearIndex}}/{{monthIndex}}</div>
+                    <div class="count" data-year="{{yearIndex}}" data-month="{{monthIndex}}">
+                        <div data-year="{{yearIndex}}" data-month="{{monthIndex}}">{{monthItem.count}} 元</div>
+                        <div class="{{monthItem.isSpread ? 'icon-arrow-up' : 'icon-arrow-right'}}"
+                             data-year="{{yearIndex}}" data-month="{{monthIndex}}"
+                        ></div>
+                    </div>
                 </view>
-                <view class="day-wrap" wx:for="{{monthItem.data}}" wx:for-item="dayItem" wx:for-index="dayIndex" wx:key="{{dayIndex}}">
+                <view class="day-wrap" wx:if="{{monthItem.isSpread}}" wx:for="{{monthItem.data}}" wx:for-item="dayItem" wx:for-index="dayIndex" wx:key="{{dayIndex}}">
                     <view class="money-wrap" wx:for="{{dayItem}}" wx:for-item="moneyItem" wx:for-index="moneyIndex" wx:key="{{moneyIndex}}">
                         <view class="item-info" style="{{moneyItem.txtStyle}}">
                             <div class="money-day">{{monthIndex}}/{{dayIndex}}</div>

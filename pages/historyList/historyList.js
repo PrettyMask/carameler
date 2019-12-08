@@ -24,12 +24,22 @@ Page({
 
     },
 
-    spread: function (e) {
+    spreadYear: function (e) {
         const year = e.target.dataset.year;
         const listData = this.data.listData;
         const yearData = listData[year];
         const spreadFlag = yearData.isSpread;
         yearData.isSpread = !spreadFlag;
+        this.setData({listData})
+    },
+    spreadMonth: function (e) {
+        const year = e.target.dataset.year;
+        const month = e.target.dataset.month;
+        const listData = this.data.listData;
+        const yearData = listData[year];
+        const monthData = (yearData.data)[month];
+        const spreadFlag = monthData.isSpread;
+        monthData.isSpread = !spreadFlag;
         this.setData({listData})
     },
     clearAll: function() {
