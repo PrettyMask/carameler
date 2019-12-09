@@ -37,7 +37,7 @@ Page({
                 listData
             },
             success: function(res) {
-                console.log('删除成功');
+            
             }
         })
     },
@@ -56,7 +56,7 @@ Page({
                 listData
             },
             success: function(res) {
-                console.log('删除成功');
+            
             }
         })
     },
