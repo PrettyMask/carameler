@@ -1,5 +1,5 @@
 .history-list{
-    height: 100vh;
+    height: 100%;
     background: rgba(255, 180, 217, 0.1);
 }
 .empty{
@@ -9,7 +9,8 @@
     font-size: 20px;
 }
 .data-wrap{
-    height: 95%;
+    /*height: 95%;*/
+    padding-bottom: 100rpx;
 }
 .year-wrap{
     background: #ffffff;
@@ -86,6 +87,13 @@
 .item-info .money-value{
     flex-grow: 1;
 }
+.no-more-data{
+    width: 100%;
+    text-align: center;
+    font-size: 20rpx;
+    color: #d6d6d6;
+    padding: 20rpx 0;
+}
 .del-item{
     position: absolute;
     right: 0;
@@ -100,10 +108,11 @@
     justify-content: center;
 }
 .btn-group{
+    z-index: 10;
     width: 100%;
     position: fixed;
     /*bottom: 20rpx;*/
-    bottom: 0rpx;
+    bottom: 0;
     left: 0;
     display: flex;
     justify-content: space-between;
@@ -127,19 +136,20 @@
     flex-grow: 1;
 }
 
-.icon-arrow-up {
+.icon-arrow-up-year {
     position: relative;
     height: 20px;
     width: 20px;
     background-color: rgba(255, 255, 255, 0);
     cursor: pointer;
     margin-left: 10px;
+    transition: transform 200ms ease-in;
 }
 
-.icon-arrow-up::before {
+.icon-arrow-up-year::before {
     content: "";
-    width: 10px;
-    height: 10px;
+    width: 9px;
+    height: 9px;
     border: solid palevioletred;
     border-width: 3px 3px 0 0;
     transform: translate(-50%, -50%) rotate(-45deg);
@@ -147,23 +157,48 @@
     left: 50%;
     top: 70%;
 }
-.icon-arrow-right {
+.icon-arrow-up-month {
     position: relative;
     height: 20px;
     width: 20px;
     background-color: rgba(255, 255, 255, 0);
     cursor: pointer;
     margin-left: 10px;
+    transition: transform 200ms ease-in;
 }
 
-.icon-arrow-right::before {
+.icon-arrow-up-month::before {
     content: "";
-    width: 10px;
-    height: 10px;
-    border: solid palevioletred;
-    border-width: 0 3px 3px 0;
+    width: 6px;
+    height: 6px;
+    border: solid #ffffff;
+    border-width: 2px 2px 0 0;
     transform: translate(-50%, -50%) rotate(-45deg);
     position: absolute;
     left: 50%;
     top: 70%;
 }
+
+.rotate90{
+    transform: rotate(90deg);
+}
+/*.icon-arrow-right {*/
+/*    position: relative;*/
+/*    height: 20px;*/
+/*    width: 20px;*/
+/*    background-color: rgba(255, 255, 255, 0);*/
+/*    cursor: pointer;*/
+/*    margin-left: 10px;*/
+/*}*/
+
+/*.icon-arrow-right::before {*/
+/*    content: "";*/
+/*    width: 10px;*/
+/*    height: 10px;*/
+/*    border: solid palevioletred;*/
+/*    border-width: 0 3px 3px 0;*/
+/*    transform: translate(-50%, -50%) rotate(-45deg);*/
+/*    position: absolute;*/
+/*    left: 50%;*/
+/*    top: 70%;*/
+/*}*/
