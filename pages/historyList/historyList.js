@@ -30,7 +30,16 @@ Page({
         const yearData = listData[year];
         const spreadFlag = yearData.isSpread;
         yearData.isSpread = !spreadFlag;
-        this.setData({listData})
+        this.setData({listData});
+        wx.setStorage({         // 更新 store 中的数据
+            key: 'historyList',
+            data: {
+                listData
+            },
+            success: function(res) {
+                console.log('删除成功');
+            }
+        })
     },
     spreadMonth: function (e) {
         const year = e.target.dataset.year;
@@ -40,7 +49,16 @@ Page({
         const monthData = (yearData.data)[month];
         const spreadFlag = monthData.isSpread;
         monthData.isSpread = !spreadFlag;
-        this.setData({listData})
+        this.setData({listData});
+        wx.setStorage({         // 更新 store 中的数据
+            key: 'historyList',
+            data: {
+                listData
+            },
+            success: function(res) {
+                console.log('删除成功');
+            }
+        })
     },
     clearAll: function() {
         let self = this;
@@ -64,7 +82,7 @@ Page({
         })
     },
     addNewItem: function () {
-        console.log('点击添加')
+        console.log('点击添加');
         wx.navigateTo({
             url: '../addItem/addItem',
             events: {},
@@ -113,6 +131,7 @@ Page({
         })
     },
     setListData: function(listData) {
+        // mock 数据
         var listDataMock = {
             '2019': {
                 data: {
