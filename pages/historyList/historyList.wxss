@@ -154,8 +154,8 @@
     border-width: 3px 3px 0 0;
     transform: translate(-50%, -50%) rotate(-45deg);
     position: absolute;
-    left: 50%;
-    top: 70%;
+    left: 80%;
+    top: 80%;
 }
 .icon-arrow-up-month {
     position: relative;
@@ -180,7 +180,7 @@
 }
 
 .rotate90{
-    transform: rotate(90deg);
+    transform: translate(0%, 10%) rotate(90deg);
 }
 /*.icon-arrow-right {*/
 /*    position: relative;*/
